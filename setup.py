@@ -52,8 +52,8 @@ setup(name='talon',
           "lxml>=2.3.3",
           "regex>=1",
           "numpy",
-          "scipy",
-          "scikit-learn<0.23", # pickled versions of classifier, else rebuild
+          # "scipy",
+          # "scikit-learn<0.23", # pickled versions of classifier, else rebuild
           'joblib',
           'chardet>=1.0.1',
           'cchardet>=0.3.5',
