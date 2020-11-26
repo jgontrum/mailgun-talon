@@ -64,7 +64,7 @@ RE_SIGNATURE_CANDIDATE = re.compile(r'''
 
 
 def extract_signature(msg_body):
-    '''
+    """
     Analyzes message for a presence of signature block (by common patterns)
     and returns tuple with two elements: message text without signature block
     and the signature itself.
@@ -74,7 +74,7 @@ def extract_signature(msg_body):
 
     >>> extract_signature('Hey man!')
     ('Hey man!', None)
-    '''
+    """
     try:
         # identify line delimiter first
         delimiter = get_delimiter(msg_body)

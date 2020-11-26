@@ -466,7 +466,9 @@ def _extract_from_html(msg_body):
     if html_tree is None:
         return msg_body
 
-    cut_quotations = (html_quotations.cut_gmail_quote(html_tree) or
+    cut_quotations = False
+    try:
+        cut_quotations = (html_quotations.cut_gmail_quote(html_tree) or
                       html_quotations.cut_yahoo_quote(html_tree) or
                       html_quotations.cut_zimbra_quote(html_tree) or
                       html_quotations.cut_blockquote(html_tree) or
@@ -474,6 +476,10 @@ def _extract_from_html(msg_body):
                       html_quotations.cut_by_id(html_tree) or
                       html_quotations.cut_from_block(html_tree)
                       )
+    except Exception as e:
+        log.exception('during html quotations cut')
+        pass
+
     html_tree_copy = deepcopy(html_tree)
 
     number_of_checkpoints = html_quotations.add_checkpoint(html_tree, 0)
